@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        /* Your existing styles here */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        .container{
+            width: 400px;
+            height: 520px;
+            margin: auto;
+            margin-top: 60px;
+            box-shadow: rgba(64, 64, 69, 0.2) 0px 7px 29px 0px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header{
+            background-color: #50dc57ed;
+            width: 100%;
+        }
+        .header>div{
+            line-height: 60px;
+            color: rgb(239, 229, 229);
+            font-size: 35px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .text-field{
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            border: 2px solid #1cd268;
+            margin: 10px 20px;
+            width: calc(100% - 60px);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .mode{
+            margin-left: -16px;
+            display: inline-block;
+        }
+        .mode li{
+            list-style: none;
+            display: inline-block;
+            font-size: 12px;
+            background-color: #f3f3fe;
+            padding: 4px;
+            cursor: pointer;
+            margin-left: -4px;
+            transition-duration: .1s;
+        }
+        .mode .active{
+            background-color: #25c81aed;
+            color: white;
+            line-height: 22px;
+            border-radius: 4px;
+        }
+        .gen{
+            float: right;
+            padding: 10px 20px;
+            background-color: #50dc63ed;
+            color: rgb(247, 248, 249);
+            border: 0px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 13px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        label{
+            margin-left: 16px;
+            font-size: 12px;
+            user-select: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        label span{
+            position: relative;
+            top: -2px;
+        }
+        .upload{
+            position: relative;
+            top: -2px;
+            font-size: 12px;
+            color: #de8a36;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .upload:hover{
+            text-decoration: underline;
+        }
+        .file-selector{
+            display: none;
+        }
+        .qr-container{
+            width: 100%;
+            height: 280px;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+            display: -webkit-box;
+        }
+        .download{
+            font-size: 13px;
+            margin-left: 20px;
+        }
+        .download li{
+            list-style: none;
+            display: inline-block;
+            cursor: pointer;
+            color: #e41212;
+            margin-left: 5px;
+        }
+        .download li:hover{
+            text-decoration: underline;
+        }
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Add styles for the Dark Mode Toggle Button */
+        #darkModeToggle {
+            position: fixed;
+            bottom: 20px; /* Adjust bottom position as needed */
+            right: 20px; /* Adjust right position as needed */
+            z-index: 999; /* Ensure it's above other content */
+        }
+        body {
+    background-image: url('S.jpg'); /* Path to your background image */
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This keeps the image fixed while scrolling */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>QR Code Generator</div>
+        </div>
+        <input type="text" placeholder="Enter link or add some text" class="text-field">
+        <ul class="mode">
+            <li>Basic</li>
+            <li class="active">Medium</li>
+            <li>Advance</li>
+        </ul>
+        <button class="gen">Generate</button>
+        <br>
+        <label>
+            <input type="checkbox" class="checkbox">
+            <span>Add Logo</span>
+        </label>
+        <div class="upload">Custom logo</div>
+        <input type="file" class="file-selector" accept=".png, .jpg, .jpeg, .svg">
+        <div class="qr-container">Qr Code</div>
+        <div class="download">
+            <span>Download: </span>
+            <li>PNG</li>
+            <li>JPG</li>
+        </div>
+    </div>
+    <button id="darkModeToggle" class="btn btn-secondary">Toggle Dark Mode</button> <!-- Added Dark Mode Toggle Button -->
+    <script>
+        $(document).ready(function() {
+            // Function to toggle dark mode
+            function toggleDarkMode() {
+                $('body').toggleClass('dark-mode');
+            }
+
+            // Event listener for the button click
+            $('#darkModeToggle').click(function() {
+                toggleDarkMode();
+            });
+        });
+    </script>
+    <script src="qr-code-styling.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
